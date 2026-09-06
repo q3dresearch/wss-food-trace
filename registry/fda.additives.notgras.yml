@@ -1,0 +1,38 @@
+source_id: fda.additives.notgras
+status: active
+cadence: monthly
+schema_id: notgras.v1
+
+publisher: FDA Office of Food Additive Safety
+publisher_tier: first_party
+# The list itself is retained — determinations do not come off it. What is
+# absent is *when*: the inventory carries no date column at all, so the date a
+# substance was added to it exists nowhere public. Capturing monthly is the
+# only way to timestamp an addition.
+destroys_own_history: true
+licence: "US Government work — public domain (17 U.S.C. 105)"
+
+personal_data: none
+
+notes: >-
+  Substances FDA has determined are NOT GRAS after the fact — the removal end
+  of the gate, and the outcome side of any revocation petition. 21 substances
+  at first capture, including Amanita muscaria, androstenedione and areca nut.
+
+  Small and slow-growing. Its value is the timestamp: an addition here is a
+  significant regulatory event that the publisher records without a date, so
+  the archive supplies the one thing the source does not.
+
+storage: git
+
+endpoints:
+  - url: https://www.cfsanappsexternal.fda.gov/scripts/fdcc/index.cfm?set=Postmarket&showAll=true&type=basic
+    delay_seconds: 2
+
+gates:
+  expect_status: 200
+  min_bytes: 20000
+  content_type_any: [html]
+  must_contain: ["not GRAS", "CAS Reg"]
+  must_not_contain: ["Access Denied", "Server Error"]
+  max_shrink_pct: 40

@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it."
+type: dataset
+title: "Food Trace (wss-food-trace)"
+abstract: >-
+  Monthly point-in-time captures of the US Food and Drug Administration's queue
+  of food and colour additive petitions under review or held in abeyance. FDA
+  publishes only the petitions currently open: when one is granted, denied or
+  withdrawn, its row disappears from the page. Grants survive as rules in 21
+  CFR, but denials and withdrawals leave no public record that the petition was
+  ever filed, how long it waited, or how it ended. This dataset preserves each
+  month's state of the queue as the bytes were served, with a manifest row
+  recording the URL, fetch time and SHA-256 of every capture, so a petition
+  that leaves the queue without a matching final rule can be identified as
+  abandoned. Observations are stamped with FDA's own as-of date rather than the
+  fetch time. Petitioner names are not collected.
+authors:
+  - name: "neldivad"
+    website: "https://github.com/neldivad"
+license: CC-BY-4.0
+keywords:
+  - food additives
+  - color additives
+  - food safety
+  - FDA
+  - regulatory petitions
+  - food regulation
+  - 21 CFR
+  - titanium dioxide
+  - food policy
+  - administrative law
+  - point-in-time-data
+  - open-data
+  - git-scraping
+  - dataset

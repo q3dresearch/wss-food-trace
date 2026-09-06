@@ -1,0 +1,42 @@
+source_id: fda.additives.petitions
+status: active
+cadence: monthly
+schema_id: petitions.v1
+
+publisher: FDA Office of Food Additive Safety
+publisher_tier: first_party
+# The page is titled "...Under Review or Held in Abeyance — as of <date>".
+# It is the live queue: when a petition is granted, denied or withdrawn it
+# drops off and nothing here records that it ever existed. Grants survive as
+# final rules in 21 CFR; abandonments leave no trace at all.
+destroys_own_history: true
+licence: "US Government work — public domain (17 U.S.C. 105)"
+
+personal_data: parties_only
+notes: >-
+  A queue of petitions asking FDA to permit, amend or revoke a food or colour
+  additive. Captures dwell time, the flip between "under review" and "held in
+  abeyance", and — by absence in a later capture — which petitions quietly
+  vanish without a matching final rule.
+
+  Petitioners are overwhelmingly companies and trade bodies; at the 2026-08-19
+  snapshot one of 32 was a private citizen filing a citizen petition. Names
+  appear only as parties to a public federal proceeding, published by FDA as
+  an inseparable part of it, with no contact details. The derived tables carry
+  no petitioner column: every question this source answers — dwell time,
+  status transitions, disappearance — uses the petition number, and deleting
+  the names leaves the dataset intact.
+
+storage: git
+
+endpoints:
+  - url: https://www.cfsanappsexternal.fda.gov/scripts/fdcc/?set=FAP-CAP
+    delay_seconds: 2
+
+gates:
+  expect_status: 200
+  min_bytes: 20000
+  content_type_any: [html]
+  must_contain: ["Held in Abeyance", "Petitioner"]
+  must_not_contain: ["Access Denied", "Server Error"]
+  max_shrink_pct: 40

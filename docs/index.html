@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Food Trace (wss-food-trace)</title>
+<meta name="description" content="Monthly point-in-time captures of the US Food and Drug Administration&#x27;s queue of food and colour additive petitions under review or held in abeyance. FDA publishes only the petitions currently open: when one is granted, denied or withdrawn, its row disappears from the page. Grants survive as rules i">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Dataset",
+  "name": "Food Trace (wss-food-trace)",
+  "description": "Monthly point-in-time captures of the US Food and Drug Administration's queue of food and colour additive petitions under review or held in abeyance. FDA publishes only the petitions currently open: when one is granted, denied or withdrawn, its row disappears from the page. Grants survive as rules in 21 CFR, but denials and withdrawals leave no public record that the petition was ever filed, how long it waited, or how it ended. This dataset preserves each month's state of the queue as the bytes were served, with a manifest row recording the URL, fetch time and SHA-256 of every capture, so a petition that leaves the queue without a matching final rule can be identified as abandoned. Observations are stamped with FDA's own as-of date rather than the fetch time. Petitioner names are not collected.",
+  "url": "https://github.com/neldivad/wss-food-trace",
+  "license": "CC-BY-4.0",
+  "isAccessibleForFree": true,
+  "keywords": [
+    "food additives",
+    "color additives",
+    "food safety",
+    "FDA",
+    "regulatory petitions",
+    "food regulation",
+    "21 CFR",
+    "titanium dioxide",
+    "food policy",
+    "administrative law",
+    "point-in-time-data",
+    "open-data",
+    "git-scraping",
+    "dataset"
+  ],
+  "creator": [
+    {
+      "@type": "Person",
+      "name": "neldivad",
+      "url": "https://github.com/neldivad"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://github.com/neldivad/wss-food-trace/tree/main/data"
+    }
+  ],
+  "temporalCoverage": "2026-09-06/2026-09-06",
+  "isBasedOn": [
+    {
+      "@type": "Dataset",
+      "name": "FDA Office of Food Additive Safety",
+      "url": "https://www.cfsanappsexternal.fda.gov/scripts/fdcc/index.cfm?set=Postmarket&showAll=true&type=basic"
+    },
+    {
+      "@type": "Dataset",
+      "name": "FDA Office of Food Additive Safety",
+      "url": "https://www.cfsanappsexternal.fda.gov/scripts/fdcc/?set=FAP-CAP"
+    },
+    {
+      "@type": "Dataset",
+      "name": "FDA Center for Veterinary Medicine",
+      "url": "https://www.fda.gov/animal-veterinary/animal-food-ingredient-consultation-afic/current-animal-food-ingredient-consultation-inventory"
+    }
+  ]
+}
+</script>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+         Helvetica, Arial, sans-serif; max-width: 46rem; margin: 0 auto;
+         padding: 2.5rem 1.25rem; }
+  h1 { font-size: 1.6rem; margin-bottom: .25rem; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { text-align: left; padding: .4rem .6rem;
+            border-bottom: 1px solid rgba(128,128,128,.3); font-size: .92rem; }
+  code { font-size: .9em; }
+  .cov { font-size: .95rem; }
+  footer { margin-top: 2.5rem; font-size: .85rem; opacity: .75; }
+</style>
+</head>
+<body>
+<h1>Food Trace (wss-food-trace)</h1>
+<p>Monthly point-in-time captures of the US Food and Drug Administration&#x27;s queue of food and colour additive petitions under review or held in abeyance. FDA publishes only the petitions currently open: when one is granted, denied or withdrawn, its row disappears from the page. Grants survive as rules in 21 CFR, but denials and withdrawals leave no public record that the petition was ever filed, how long it waited, or how it ended. This dataset preserves each month&#x27;s state of the queue as the bytes were served, with a manifest row recording the URL, fetch time and SHA-256 of every capture, so a petition that leaves the queue without a matching final rule can be identified as abandoned. Observations are stamped with FDA&#x27;s own as-of date rather than the fetch time. Petitioner names are not collected.</p>
+<p class="cov">History held: <strong>2026-09-06</strong> to <strong>2026-09-06</strong>.</p>
+
+<h2>What is captured</h2>
+<table>
+  <thead><tr><th>source</th><th>publisher</th><th>cadence</th><th>terms</th></tr></thead>
+  <tbody>
+      <tr><td><code>fda.additives.notgras</code></td><td>FDA Office of Food Additive Safety</td><td>monthly</td><td>US Government work — public domain (17 U.S.C. 105)</td></tr>
+      <tr><td><code>fda.additives.petitions</code></td><td>FDA Office of Food Additive Safety</td><td>monthly</td><td>US Government work — public domain (17 U.S.C. 105)</td></tr>
+      <tr><td><code>fda.animalfeed.consultations</code></td><td>FDA Center for Veterinary Medicine</td><td>monthly</td><td>US Government work — public domain (17 U.S.C. 105)</td></tr>
+  </tbody>
+</table>
+
+<h2>Using it</h2>
+<p>Derived tables are CSV under <code>data/</code> in
+<a href="https://github.com/neldivad/wss-food-trace">the repository</a>; the bytes they came from are under
+<code>raw/</code>, and <code>SOURCES.md</code> lists every source URL.</p>
+<p>Every observation carries <code>source_id</code> and <code>raw_ref</code>. The
+matching manifest row holds that <code>raw_ref</code> with the URL, the fetch
+timestamp and a SHA-256 of exactly what came back, so any number here traces to
+the bytes it came from.</p>
+<p>Cite this dataset by its repository and the date you took it from: <a href="https://github.com/neldivad/wss-food-trace">https://github.com/neldivad/wss-food-trace</a>, accessed 2026-09-06.</p>
+
+<footer>
+<p>Repository code and captured data are licensed separately. This dataset is
+offered under CC-BY-4.0; each publisher's own terms govern their material and
+are listed per source above. Generated by <code>wss datapage</code> — do not edit
+by hand.</p>
+</footer>
+</body>
+</html>

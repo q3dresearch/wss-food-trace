@@ -1,0 +1,47 @@
+source_id: fda.animalfeed.consultations
+status: active
+cadence: monthly
+schema_id: afic.v1
+
+publisher: FDA Center for Veterinary Medicine
+publisher_tier: first_party
+# AFIC is an *interim* process, created in August 2024 while FDA evaluates its
+# animal Food Additive Petition and GRAS programmes. The page is titled
+# "Current ... Inventory". The risk here is not that rows roll off — it is that
+# the whole programme is wound up and the page goes with it.
+destroys_own_history: true
+licence: "US Government work — public domain (17 U.S.C. 105)"
+
+personal_data: none              # firms only; no individual consultants listed
+
+notes: >-
+  The animal-feed half of the gate. Firms consult FDA voluntarily about new
+  feed ingredients while the formal FAP and GRAS routes are under review.
+  Nine consultations at first capture (AFIC 0001-0009), eight pending and one
+  complete.
+
+  Thin on its own. Captured because the programme is explicitly interim, so
+  the record of what was consulted during the interim plausibly disappears
+  with the programme rather than being migrated anywhere.
+
+storage: git
+
+endpoints:
+  - url: https://www.fda.gov/animal-veterinary/animal-food-ingredient-consultation-afic/current-animal-food-ingredient-consultation-inventory
+    delay_seconds: 2
+
+# FDA runs this page on Drupal, which stamps a fresh random id into every
+# render — four per page, different on every fetch. Identical data, identical
+# byte count, different sha256. Left alone, dedupe never fires and every
+# capture stores another copy of the same nine consultations forever.
+# Stripped for change detection only; the archived bytes stay verbatim.
+dedupe_ignore:
+  - "js-view-dom-id-[0-9a-f]+"
+
+gates:
+  expect_status: 200
+  min_bytes: 5000
+  content_type_any: [html]
+  must_contain: ["AFIC No.", "Intended Species"]
+  must_not_contain: ["Access Denied", "Server Error"]
+  max_shrink_pct: 40
