@@ -129,7 +129,7 @@ the number resolves to the petitioner on FDA's own site.
 ## Running it
 
 ```bash
-pip install "wss @ git+https://github.com/q3dresearch/wss-engine.git@v0.6.0"
+pip install "wss @ git+https://github.com/q3dresearch/wss-engine.git@v0.6.2"
 export WSS_CONTACT="https://github.com/q3dresearch/wss-food-trace"
 
 wss validate                       # registry schema check; CI gate
