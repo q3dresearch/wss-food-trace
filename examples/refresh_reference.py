@@ -27,7 +27,7 @@ OUT = os.path.join(ROOT, "reference", "final-rules.csv")
 OUT_FCN = os.path.join(ROOT, "reference", "fcn-notifications.csv")
 OUT_GRAS = os.path.join(ROOT, "reference", "gras-notices.csv")
 OUT_AGRAS = os.path.join(ROOT, "reference", "agras-notices.csv")
-UA = "wss-food-trace/0.1 (+https://github.com/neldivad/wss-food-trace)"
+UA = "wss-food-trace/0.1 (+https://github.com/q3dresearch/wss-food-trace)"
 
 # NOTE: the default view of this app is page one, not the whole set. Without
 # showAll it returns 51 rows back to 2014 and looks exactly like a rolling

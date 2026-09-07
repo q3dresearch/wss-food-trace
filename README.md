@@ -6,15 +6,15 @@
 
 <div align="center">
 
-  <a href="https://github.com/neldivad/wss-food-trace/actions/workflows/capture-monthly.yml"><img alt="capture status" src="https://img.shields.io/github/actions/workflow/status/neldivad/wss-food-trace/capture-monthly.yml?label=capture&style=flat-square"></a>
-  <a href="https://github.com/neldivad/wss-food-trace/commits"><img alt="last capture" src="https://img.shields.io/github/last-commit/neldivad/wss-food-trace?label=last%20capture&style=flat-square"></a>
-  <a href="https://github.com/neldivad/wss-food-trace/blob/main/LICENSE"><img alt="licence" src="https://img.shields.io/github/license/neldivad/wss-food-trace?style=flat-square"></a>
-  <a href="https://github.com/neldivad/wss-food-trace"><img alt="stars" src="https://img.shields.io/github/stars/neldivad/wss-food-trace?style=social"></a>
+  <a href="https://github.com/q3dresearch/wss-food-trace/actions/workflows/capture-monthly.yml"><img alt="capture status" src="https://img.shields.io/github/actions/workflow/status/q3dresearch/wss-food-trace/capture-monthly.yml?label=capture&style=flat-square"></a>
+  <a href="https://github.com/q3dresearch/wss-food-trace/commits"><img alt="last capture" src="https://img.shields.io/github/last-commit/q3dresearch/wss-food-trace?label=last%20capture&style=flat-square"></a>
+  <a href="https://github.com/q3dresearch/wss-food-trace/blob/main/LICENSE"><img alt="licence" src="https://img.shields.io/github/license/q3dresearch/wss-food-trace?style=flat-square"></a>
+  <a href="https://github.com/q3dresearch/wss-food-trace"><img alt="stars" src="https://img.shields.io/github/stars/q3dresearch/wss-food-trace?style=social"></a>
 
 </div>
 
 <p align="center">
-  <sub>fleet: <a href="https://github.com/neldivad/wss-engine">engine</a> · <a href="https://github.com/neldivad/wss-hugging-face">hugging face</a> · <a href="https://github.com/neldivad/wss-openrouter">openrouter</a> · <a href="https://github.com/neldivad/wss-cloud-footprint">cloud footprint</a> · <a href="https://github.com/neldivad/wss-mining-pipeline">mining</a> · <a href="https://github.com/neldivad/wss-forest-harvest">forest</a> · <strong>food</strong></sub>
+  <sub>fleet: <a href="https://github.com/q3dresearch/wss-engine">engine</a> · <a href="https://github.com/q3dresearch/wss-hugging-face">hugging face</a> · <a href="https://github.com/q3dresearch/wss-openrouter">openrouter</a> · <a href="https://github.com/q3dresearch/wss-cloud-footprint">cloud footprint</a> · <a href="https://github.com/q3dresearch/wss-mining-pipeline">mining</a> · <a href="https://github.com/q3dresearch/wss-forest-harvest">forest</a> · <strong>food</strong></sub>
 </p>
 
 **Every substance in the food supply passed through a gate. FDA publishes what
@@ -129,8 +129,8 @@ the number resolves to the petitioner on FDA's own site.
 ## Running it
 
 ```bash
-pip install "wss @ git+https://github.com/neldivad/wss-engine.git@v0.5.9"
-export WSS_CONTACT="https://github.com/neldivad/wss-food-trace"
+pip install "wss @ git+https://github.com/q3dresearch/wss-engine.git@v0.5.9"
+export WSS_CONTACT="https://github.com/q3dresearch/wss-food-trace"
 
 wss validate                       # registry schema check; CI gate
 wss capture --cadence monthly      # fetch → gate → hash → dedupe → write → manifest
