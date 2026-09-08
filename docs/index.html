@@ -11,7 +11,7 @@
   "@type": "Dataset",
   "name": "Food Trace (wss-food-trace)",
   "description": "Monthly point-in-time captures of the US Food and Drug Administration's queue of food and colour additive petitions under review or held in abeyance. FDA publishes only the petitions currently open: when one is granted, denied or withdrawn, its row disappears from the page. Grants survive as rules in 21 CFR, but denials and withdrawals leave no public record that the petition was ever filed, how long it waited, or how it ended. This dataset preserves each month's state of the queue as the bytes were served, with a manifest row recording the URL, fetch time and SHA-256 of every capture, so a petition that leaves the queue without a matching final rule can be identified as abandoned. Observations are stamped with FDA's own as-of date rather than the fetch time. Petitioner names are not collected.",
-  "url": "https://github.com/neldivad/wss-food-trace",
+  "url": "https://github.com/q3dresearch/wss-food-trace",
   "license": "CC-BY-4.0",
   "isAccessibleForFree": true,
   "keywords": [
@@ -35,16 +35,21 @@
       "@type": "Person",
       "name": "neldivad",
       "url": "https://github.com/neldivad"
+    },
+    {
+      "@type": "Person",
+      "name": "q3dresearch",
+      "url": "https://github.com/q3dresearch"
     }
   ],
   "distribution": [
     {
       "@type": "DataDownload",
       "encodingFormat": "text/csv",
-      "contentUrl": "https://github.com/neldivad/wss-food-trace/tree/main/data"
+      "contentUrl": "https://github.com/q3dresearch/wss-food-trace/tree/main/data"
     }
   ],
-  "temporalCoverage": "2026-09-06/2026-09-06",
+  "temporalCoverage": "2026-09-06/2026-09-07",
   "isBasedOn": [
     {
       "@type": "Dataset",
@@ -81,7 +86,31 @@
 <body>
 <h1>Food Trace (wss-food-trace)</h1>
 <p>Monthly point-in-time captures of the US Food and Drug Administration&#x27;s queue of food and colour additive petitions under review or held in abeyance. FDA publishes only the petitions currently open: when one is granted, denied or withdrawn, its row disappears from the page. Grants survive as rules in 21 CFR, but denials and withdrawals leave no public record that the petition was ever filed, how long it waited, or how it ended. This dataset preserves each month&#x27;s state of the queue as the bytes were served, with a manifest row recording the URL, fetch time and SHA-256 of every capture, so a petition that leaves the queue without a matching final rule can be identified as abandoned. Observations are stamped with FDA&#x27;s own as-of date rather than the fetch time. Petitioner names are not collected.</p>
-<p class="cov">History held: <strong>2026-09-06</strong> to <strong>2026-09-06</strong>.</p>
+<p class="cov">History held: <strong>2026-09-06</strong> to <strong>2026-09-07</strong>.</p>
+
+
+<h2>Findings</h2>
+<p>Figures are rebuilt from the derived tables on every run; each one names the entities it is about so it can be acted on without a further query.</p>
+  <figure>
+    <a href="charts/animal-vs-human.svg"><img src="charts/animal-vs-human.svg" alt="Animal vs human" loading="lazy"></a>
+    <figcaption><strong>Animal vs human</strong></figcaption>
+  </figure>
+  <figure>
+    <a href="charts/practice-effect.svg"><img src="charts/practice-effect.svg" alt="Practice effect" loading="lazy"></a>
+    <figcaption><strong>Practice effect</strong></figcaption>
+  </figure>
+  <figure>
+    <a href="charts/queue-composition.svg"><img src="charts/queue-composition.svg" alt="Queue composition" loading="lazy"></a>
+    <figcaption><strong>Queue composition</strong></figcaption>
+  </figure>
+  <figure>
+    <a href="charts/the-gate-moved.svg"><img src="charts/the-gate-moved.svg" alt="The gate moved" loading="lazy"></a>
+    <figcaption><strong>The gate moved</strong></figcaption>
+  </figure>
+  <figure>
+    <a href="charts/who-files.svg"><img src="charts/who-files.svg" alt="Who files" loading="lazy"></a>
+    <figcaption><strong>Who files</strong></figcaption>
+  </figure>
 
 <h2>What is captured</h2>
 <table>
@@ -95,13 +124,13 @@
 
 <h2>Using it</h2>
 <p>Derived tables are CSV under <code>data/</code> in
-<a href="https://github.com/neldivad/wss-food-trace">the repository</a>; the bytes they came from are under
+<a href="https://github.com/q3dresearch/wss-food-trace">the repository</a>; the bytes they came from are under
 <code>raw/</code>, and <code>SOURCES.md</code> lists every source URL.</p>
 <p>Every observation carries <code>source_id</code> and <code>raw_ref</code>. The
 matching manifest row holds that <code>raw_ref</code> with the URL, the fetch
 timestamp and a SHA-256 of exactly what came back, so any number here traces to
 the bytes it came from.</p>
-<p>Cite this dataset by its repository and the date you took it from: <a href="https://github.com/neldivad/wss-food-trace">https://github.com/neldivad/wss-food-trace</a>, accessed 2026-09-06.</p>
+<p>Cite this dataset by its repository and the date you took it from: <a href="https://github.com/q3dresearch/wss-food-trace">https://github.com/q3dresearch/wss-food-trace</a>, accessed 2026-09-07.</p>
 
 <footer>
 <p>Repository code and captured data are licensed separately. This dataset is
