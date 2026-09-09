@@ -24,6 +24,21 @@ import os
 import re
 from collections import Counter, defaultdict
 
+
+def _open_partition(path):
+    """Open a derived partition, gzipped or not.
+
+    Engine v0.6.34 made `derived/observations/*.csv.gz` the written form. Every
+    reader in this repo went on globbing `*.csv`, found nothing, and said "no
+    observations yet -- run capture + derive first" over a full archive. Stdlib
+    only, so `head`/`zcat` remain the only tools a reader needs.
+    """
+    import gzip
+    import io
+    if str(path).endswith(".gz"):
+        return io.TextIOWrapper(gzip.open(path, "rb"), encoding="utf-8", newline="")
+    return open(path, encoding="utf-8", newline="")
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 OUT = os.path.join(HERE, "charts")
@@ -80,11 +95,11 @@ def load(source_id="fda.additives.petitions"):
     different file from one that falls back to fetch time. Taking the newest
     file gets you whichever source happened to be observed last.
     """
-    files = sorted(glob.glob(os.path.join(ROOT, "derived", "observations", "*.csv")))
+    files = sorted(glob.glob(os.path.join(ROOT, "derived", "observations", "*.csv*")))
     if not files:
         raise SystemExit("no observations — run `wss derive` first")
     rows = [r for f in files
-            for r in csv.DictReader(open(f, encoding="utf-8"))
+            for r in csv.DictReader(_open_partition(f))
             if r["source_id"] == source_id]
     if not rows:
         raise SystemExit(f"no observations for {source_id}")
